@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>SlabTec Booking</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#e3004b"/>
+    <!-- iOS PWA support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="assets/icon-180.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/icon-152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="assets/icon-167.png">
+    <style>
+      :root { --bg:#ffffff; --text:#11111a; --accent:#e3004b; }
+      html,body { height:100%; margin:0; background:var(--bg); color:var(--text);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif; }
+      .wrap { display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px; height:100%; padding:18px; }
+      .card { text-align:center; max-width:520px; }
+      .logo { width:min(240px, 60vw); height:auto; }
+      .btn { padding:12px 18px; border-radius:14px; border:2px solid var(--accent); background:#fff;
+        cursor:pointer; font-weight:700; color:var(--accent); }
+      .btn:hover { background:var(--accent); color:#fff; }
+      .steps { font-size:15px; opacity:.8; line-height:1.45; }
+      .muted { opacity:.65; font-size:14px; }
+    </style>
+    <script>
+      const TARGET = "https://portal.fieldpulse.com/slabtec/service/category";
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js');
+        });
+      }
+      function openBooking() { location.href = TARGET; }
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <img class="logo" src="assets/icon-512.png" alt="SlabTec logo"/>
+        <h1>SlabTec Booking</h1>
+        <p class="steps">On iPhone: tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to install.<br/>
+        After installing, open from the app icon for a full‑screen experience.</p>
+        <p><button class="btn" onclick="openBooking()">Open Booking Portal</button></p>
+        <p class="muted">If the button doesn't open, check your connection or try again.</p>
+      </div>
+    </div>
+  </body>
+</html>
